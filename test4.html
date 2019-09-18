@@ -1,0 +1,90 @@
+<div dir="ltr" style="text-align: left;" trbidi="on">
+<br /></div>
+
+<style type="text/css">
+/* highlight theme: Bipolar */
+body.hl	{ background-color:#0f020a; }
+pre.hl	{ color:#d62b9a; background-color:#0f020a; font-size:10pt; font-family:'Consolas';}
+.hl.num { color:#0083c9; }
+.hl.esc { color:#2fa4a8; }
+.hl.str { color:#eba236; }
+.hl.pps { color:#d9eb36; }
+.hl.slc { color:#35d6e5; font-style:italic; }
+.hl.com { color:#35d6e5; font-style:italic; }
+.hl.ppc { color:#6b5deb; }
+.hl.opt { color:#e3d922; }
+.hl.ipl { color:#ee532c; }
+.hl.lin { color:#999999; }
+.hl.kwa { color:#20c79d; font-weight:bold; }
+.hl.kwb { color:#1d9617; font-weight:bold; }
+.hl.kwc { color:#72d42c; font-weight:bold; }
+.hl.kwd { color:#81e535; font-weight:bold; }
+.hl.kwe { color:#ff0000; font-weight:bold; }
+/* Plug-in theme injections: */
+a.hl, a.hl:visited {color:inherit;font-weight:inherit;}a.hl, a.hl:visited {color:inherit;font-weight:inherit;}a.hl, a.hl:visited {color:inherit;font-weight:inherit;}a.hl, a.hl:visited {color:inherit;font-weight:inherit;}pre.hl { background-image: linear-gradient(transparent 50%, rgba(50,50,50, 0.5) 50%); background-size:3em 3em; background-origin:content-box; font-size:100%/1.5;line-height: 1.5; }pre.hl, ol.hl { background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='25'  height='25'><line x1='0' y1='0' x2='0' y2='25' style='stroke:rgb(50,50,50);stroke-width:1'/><line x1='0' y1='0' x2='25' y2='0' style='stroke:rgb(50,50,50);stroke-width:1'/></svg>");}figure.hl {
+   margin-left: 0px; 
+   color: #d62b9a;
+}
+ pre.hl, ol.hl { padding-left: 1em; border-left: 5px solid #20c79d;}pre.hl, ol.hl { margin:2em; box-shadow:10px 10px 0.5em #ff5dcc; border: 1px solid #ff5dcc;}pre.hl {padding:1em;}ol.hl {padding:1em 1em 1em 4em;}body.hl { background-color:#41343c; }.hl.arrow_fold:before {
+  content: '+';
+  color: #d62b9a; 
+  position: absolute;     
+  left: 1em;   
+  }
+.hl.arrow_fold:after {
+  content: '\2026';
+  color: #d62b9a; 
+  border-width:1px;border-style:dotted;border-color:#d62b9a;     
+  margin-left: 1em;
+  padding:0px 2px 0px;
+}
+.hl.arrow_unfold:before {
+  content: '-';
+  color: #d62b9a; 
+  position: absolute;     
+  left: 1em;  
+}
+.hl.arrow_fold, .hl.arrow_unfold  {
+  cursor: pointer;
+  /*background-color: #eee;*/
+  width: 100%;
+  display: inline-block;
+}
+.hl.arrow_fold {
+  border-width: 1px;
+  border-bottom-style: groove;
+  border-color: #d62b9a;
+} .hl.box { border-width:1px;border-style:dotted;border-color:gray; cursor: pointer;}pre.hl, ol.hl { font-family: Monoid,"Fira Code","DejaVu Sans Code",monospace;}pre.hl, ol.hl { font-family: Consolas,Monaco,"Andale Mono","Ubuntu Mono",monospace;}.hl.box { border-width:1px;border-style:dotted;border-color:gray; cursor: pointer;}a.hl, a.hl:visited {color:inherit;font-weight:inherit;}a.hl, a.hl:visited {color:inherit;font-weight:inherit;}
+</style>
+
+<figure class="hl"><figcaption></figcaption>
+<pre class="hl">&nbsp;<span class="hl slc">#&nbsp;Let&#39;s&nbsp;authorize&nbsp;ourself&nbsp;in&nbsp;CPANEL&nbsp;with&nbsp;API&nbsp;Token.&nbsp;Paths&nbsp;&nbsp;may&nbsp;depend&nbsp;on&nbsp;CPANEL&#39;s&nbsp;hoster:</span></span>
+&nbsp;<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/wget.1.html">wget</a>&nbsp;<span class="hl kwb">-q&nbsp;--header</span><span class="hl opt">=</span><span class="hl str">&quot;Authorization:&nbsp;cpanel&nbsp;$CPANEL_USERID:$CPANEL_APITOKEN&quot;</span>&nbsp;&nbsp;&nbsp;https<span class="hl opt">://</span><span class="hl kwd">$CPANEL_HOST</span><span class="hl opt">:</span><span class="hl num">2083</span><span class="hl opt">/</span>execute<span class="hl opt">/</span>SSL<span class="hl opt">/</span>fetch_certificates_for_fqdns?domains<span class="hl opt">=</span><span class="hl kwd">$DOMAINS&nbsp;</span><span class="hl kwb">-O&nbsp;</span><span class="hl str">&quot;/tmp/output.json&quot;</span></span>
+&nbsp;</span>
+&nbsp;<span class="hl slc">#&nbsp;Try&nbsp;to&nbsp;find&nbsp;the&nbsp;most&nbsp;fresh&nbsp;not&nbsp;self&nbsp;signed&nbsp;certificate&nbsp;there.CPANL&nbsp;returns&nbsp;JSON&nbsp;back</span></span>
+&nbsp;freshestNotSelfSignedData<span class="hl opt">=</span>$<span class="hl opt">(</span><span class="hl kwc"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/cat.1.html">cat</a>&nbsp;</span><span class="hl str">&quot;/tmp/output.json&quot;</span>|<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/jq.1.html">jq</a>&nbsp;<span class="hl str">&#39;.[&quot;data&quot;]&#39;</span>|<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/jq.1.html">jq</a>&nbsp;<span class="hl str">&#39;map(select(.is_self_signed&nbsp;==&nbsp;0))&#39;</span>|<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/jq.1.html">jq</a>&nbsp;<span class="hl str">&#39;max_by(.not_after)&#39;</span><span class="hl opt">)</span></span>
+&nbsp;</span>
+&nbsp;<span class="hl kwa">if&nbsp;</span><span class="hl opt">[&nbsp;</span><span class="hl kwb">-z&nbsp;</span><span class="hl str">&quot;$freshestNotSelfSignedData&quot;</span>&nbsp;<span class="hl opt">];&nbsp;</span><span class="hl kwa">then</span></span>
+&nbsp;&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;</span><span class="hl str">&quot;Cannot&nbsp;get&nbsp;CPANEL&#39;s&nbsp;data&nbsp;for&nbsp;domain(s)&nbsp;&#39;$DOMAINS&#39;.&nbsp;May&nbsp;be&nbsp;authentification&nbsp;error.&nbsp;Quitting...&quot;</span></span>
+&nbsp;&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/exit.1p.html">exit</a>&nbsp;</span><span class="hl num">66</span></span>
+&nbsp;<span class="hl kwa">fi</span></span>
+&nbsp;</span>
+&nbsp;<span class="hl kwa">if&nbsp;</span><span class="hl opt">[&nbsp;</span><span class="hl str">&quot;$freshestNotSelfSignedData&quot;</span>&nbsp;<span class="hl opt">==&nbsp;</span><span class="hl str">&quot;null&quot;</span>&nbsp;<span class="hl opt">];&nbsp;</span><span class="hl kwa">then</span></span>
+&nbsp;&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;</span><span class="hl str">&quot;Cannot&nbsp;get&nbsp;CPANELS&nbsp;data&nbsp;for&nbsp;domain(s)&nbsp;&#39;$DOMAINS&#39;.&nbsp;May&nbsp;be&nbsp;no&nbsp;certs&nbsp;were&nbsp;issued.&nbsp;Quitting...&quot;</span></span>
+&nbsp;&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/exit.1p.html">exit</a>&nbsp;</span><span class="hl num">68</span></span>
+&nbsp;<span class="hl kwa">fi</span></span>
+&nbsp;</span>
+&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;</span><span class="hl str">&quot;Got&nbsp;CPanel&#39;s&nbsp;API&nbsp;reply:&quot;</span>&nbsp;$<span class="hl opt">(</span><span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;</span>$<span class="hl opt">(</span><span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;-e&nbsp;</span><span class="hl str">&quot;${freshestNotSelfSignedData}&quot;</span><span class="hl opt">)&nbsp;</span>|&nbsp;<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/cut.1.html">cut</a>&nbsp;<span class="hl kwb">-c1-80</span><span class="hl opt">)</span><span class="hl str">&quot;...&quot;</span></span>
+&nbsp;</span>
+&nbsp;<span class="hl slc">#Not_after&nbsp;is&nbsp;a&nbsp;&nbsp;unix&nbsp;timestamp&nbsp;like&nbsp;e.g.&nbsp;1565736023&nbsp;till&nbsp;cert&nbsp;is&nbsp;valid</span></span>
+&nbsp;Not_after<span class="hl opt">=</span>$<span class="hl opt">(</span><span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;</span><span class="hl str">&quot;${freshestNotSelfSignedData}&quot;</span>|<a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/jq.1.html">jq</a>&nbsp;<span class="hl str">&#39;.[&quot;not_after&quot;]&#39;</span>|<span class="hl kwc"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/sed.1.html">sed</a>&nbsp;</span><span class="hl str">&#39;s/&quot;//g&#39;</span><span class="hl opt">)</span></span>
+&nbsp;<span class="hl kwb"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/echo.1.html">echo</a>&nbsp;&nbsp;</span><span class="hl str">&quot;Cert&nbsp;found&nbsp;ended&nbsp;at&quot;</span>&nbsp;<span class="hl str">`date&nbsp;-ud&nbsp;&#64;${Not_after}`</span></span>
+&nbsp;</span>
+&nbsp;</span>
+&nbsp;<span class="hl kwa">if&nbsp;</span><span class="hl opt">[[&nbsp;</span><span class="hl kwb">-f&nbsp;</span><span class="hl opt">/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$DOMAINS</span>.not_after&nbsp;<span class="hl opt">]];&nbsp;</span><span class="hl kwa">then&nbsp;</span></span>
+&nbsp;&nbsp;validTill<span class="hl opt">=</span>$<span class="hl opt">(</span><span class="hl kwc"><a class="hl" target="new" href="http://man7.org/linux/man-pages/man1/cat.1.html">cat</a>&nbsp;</span><span class="hl opt">/</span>tmp<span class="hl opt">/</span><span class="hl kwd">$DOMAINS</span>.not_after<span class="hl opt">)</span></span>
+&nbsp;<span class="hl kwa">fi</span></span>
+</pre>
+</figure>
+
+<!--HTML generated by highlight 3.53, http://www.andre-simon.de/-->
